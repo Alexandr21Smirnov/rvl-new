@@ -3,10 +3,8 @@
         <h3>Approximate Move Date</h3>
         <p>When you suppose to move?</p>
         <form class="form">
-            <FullCalendar :options="calendarOptions" />
+            <FullCalendar class="calendar" :options="calendarOptions" />
         </form>
-
-        <button @click="$emit('submit')">Submit</button>
     </div>
 </template>
 
@@ -47,19 +45,38 @@ export default {
 </script>
 
 <style scoped>
+    .fc::v-deep .fc-toolbar-title {
+        font-size: 1rem;
+    }
+    .fc::v-deep .fc-daygrid-day-events {
+        display: none;
+    }
     .move-date-selector {
         padding: 20px;
+        background-color: #3a4454;
+        min-height: 100vh;
+        position: relative;
+        z-index: 20;
+    }
+    .calendar {
+        background-color: white;
+        color: #414c5e;
+    }
+    .calendar button {
+        margin: 10px;
     }
     h3 {
         margin-bottom: 50px;
+        font-size: 1.75rem;
     }
     p {
-        color: grey;
+        color: #9f9f9f;
+        margin-bottom: 10px;
     }
     .form {
         padding: 10px 5px 20px 5px;
         margin: 0 auto;
-        width: 600px;
-        height: 600px;
+        width: 100%;
+        min-height: 100vh;
     }
 </style>

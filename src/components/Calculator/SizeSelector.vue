@@ -58,24 +58,30 @@ export default {
 
 <style scoped>
     .move-size-selector {
+        min-height: 100vh;
+        position: relative;
+        z-index: 20;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        background-color: #112541;
+        background-color: #3a4454;
     }
     .title {
         color: white;
+        margin-bottom: 15px;
     }
     .btn {
         color: white;
-        width: 100%;
-        border-radius: 5px;
+        width: 200px;
+        height: 40px;
+        border-radius: 3px;
         border: none;
         background-color: rgb(227, 125, 0);
         padding: 10px 10px;
         margin-top: 15px;
         cursor: pointer;
+        font-weight: bold;
     }
     .btn-wrapper {
         display: flex;

@@ -1,15 +1,36 @@
 <template>
     <div class="calculating-progress-bar">
-        <div class="check-mark" v-if="percentage >= 50">
-            CHECK MARK! CHANGE WITH ICON!
+        <div class="info-block">
+            <div class="text-wrapp">
+            <img class="icon" src="@/assets/home-icon.svg" />
+            <div class="text">Size: <span>Studio</span></div>
+            </div>
+            <div class="text-wrapp">
+            <img class="icon" src="@/assets/calendar.svg" />
+            <div class="text">Date: <span>Sep 27, 2022</span></div>
+            </div>
         </div>
-        <div v-if="percentage < 25">
+        <div class="location-wrapp">
+            <div class="text-wrapp">
+                <img class="location-icon" src="@/assets/location.svg"  />
+                <span class="location-text">Long Island City, NY</span>
+            </div>
+            <img class="arrow-icon" src="@/assets/arrow-right.svg" />
+            <div class="text-wrapp">
+                <img class="location-icon" src="@/assets/location.svg" />
+                <span class="location-text">Los Angeles, CA</span>
+            </div>
+        </div>
+        <div class="check-mark" v-if="percentage >= 50">
+            <img class="check-mark-icon" src="@/assets/check-mark-filled.svg"  />
+        </div>
+        <div class="title" v-if="percentage < 25">
             Calculating...
         </div>
-        <div v-else-if="percentage >= 25 && percentage < 50">
+        <div class="title" v-else-if="percentage >= 25 && percentage < 50">
             Searching For Movers...
         </div>
-        <div v-else-if="percentage >= 50">
+        <div class="title" v-else-if="percentage >= 50">
             We Found <span class="accent">{{ moversCount }}</span> Movers in Your Area!
         </div>
         <div class="progress-bar">
@@ -40,20 +61,16 @@ export default {
     },
     methods: {
         initSearching() {
-            this.moversCount = 0;
+            this.moversCount = 1;
 
             setInterval(() => {
-                this.percentage += 15;
+                this.percentage += 25;
 
                 if (this.percentage > 50) {
-                    this.moversCount = 1;
-                }
-
-                if (this.percentage > 75) {
                     this.moversCount = 2;
                 }
 
-                if (this.percentage > 90) {
+                if (this.percentage > 75) {
                     this.moversCount = 4;
                 }
 
@@ -62,10 +79,10 @@ export default {
 
                     setTimeout(
                         () => this.$emit("submit"),
-                        3000
+                        2000
                     );
                 }
-            }, 2000);
+            }, 1000);
         }
     }
 }
@@ -73,26 +90,103 @@ export default {
 
 <style scoped>
     .calculating-progress-bar {
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .location-wrapp {
         display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        margin-bottom: 20px;
+        height: 40px;
+    }
+    .title {
+        color: #000;
+        font-style: italic;
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+    .info-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 50px;
+        max-width: 170px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .text-wrapp {
+        display: flex;
+        flex-direction: inline;
         align-items: center;
         justify-content: center;
     }
-
+    .check-mark {
+        margin-bottom: 20px;
+    }
+    .check-mark-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    .location-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+    .mark-icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        align-self: start;
+        padding-bottom: 5px;
+    }
+    .arrow-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        margin-left: 5px;
+        align-self: center;
+    }
+    .text {
+        color: #808080;
+    }
+    .text span {
+        color: #b4b4b4;
+    }
+    .text-wrapp {
+        display: flex;
+    }
+    .location-text {
+        color: #b4b4b4;
+        font-size: 0.95rem;
+    }
     .progress-bar {
         width: 100%;
         height: 10px;
         border-radius: 10px;
         border: none;
-        background-color: gray;
+        background-color: #808080;
+        margin-bottom: 10px;
     }
     .bar {
-        background-color: green;
+        background-color: #05ad05;
         border-radius: 10px;
         height: 100%;
         width: 0;
         transition: width 1s ease;
     }
     .accent {
-        color: green;
+        color: #05ad05;
+    }
+    .percentage {
+        color:#808080;
+        font-size: 1.25rem;
     }
 </style>

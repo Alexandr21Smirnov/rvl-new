@@ -1,5 +1,6 @@
 <template>
     <div class="movers-offline-warning">
+        <img class="icon" src="@/assets/moon.svg" />
         <h3 class="title">Due to the time...<br>some movers are currently offline</h3>
         <p class="text text-grey">In order to receive an exact quote,<br>Movers must gather some final<br>details of your move.</p>
         <div class="text">Would you like additional movers to<br> Provide quotes in the morning?</div>
@@ -40,9 +41,12 @@ export default {
 
 <style scoped>
     .movers-offline-warning {
-        background-color: #112541;
+        background-color: #414c5e;
         padding: 10px 5px 20px 5px;
-        min-height: 100vh;
+        min-height: 300px;
+        margin: 20px 10px;
+        border: none;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -52,15 +56,22 @@ export default {
         margin-bottom: 15px;
         line-height: 30px;
     }
+    .icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+    }
     .text {
         margin-bottom: 15px;
         line-height: 21px;
     }
     .text-grey {
-        color: grey;
+        color: #ababab;
+        font-style: italic;
     }
     .btn {
         color: white;
+        font-weight: bold;
         width: 100px;
         border-radius: 5px;
         border: none;
@@ -71,6 +82,7 @@ export default {
     }
     .btn-no {
         color: white;
+        font-weight: bold;
         width: 100px;
         border-radius: 5px;
         border: 1px solid grey;
