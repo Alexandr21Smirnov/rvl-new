@@ -121,6 +121,7 @@ export default {
         margin-bottom: 30px;
     }
     .card {
+        background-color: #fff;
         border-radius: 15px;
         box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.3);
         max-width: 400px;
